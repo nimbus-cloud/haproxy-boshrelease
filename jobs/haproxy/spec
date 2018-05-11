@@ -342,4 +342,4 @@ properties:
 
   ha_proxy.tcp_routing.port_range:
     description: "A range of ports for haproxy to listen on to enable CF TCP Routing. Used only if 'tcp_router' link is present."
-    default: 12006
+    default: 1024-1123
