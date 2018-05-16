@@ -383,6 +383,15 @@ backend http-routed-backend-<%= prefix_hash %>
 <% end -%>
 # }}}
 
+
+frontend tcp-in-12006
+    bind *:12006
+    default_backend server12006
+ 
+backend server12006
+    server cf-456 cftcp.stage-spa.bskyb.com:9202
+
+
 # TCP Routing  {{{
 <% if_link("tcp_router") do |tcp_router| -%>
 
