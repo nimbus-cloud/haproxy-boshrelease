@@ -14,3 +14,15 @@ keepalived/keepalived-1.2.24.tar.gz:
   size: 601873
   object_id: aa936bbe-fe82-49cc-82c8-99d867e5b4bb
   sha: a69b2c40627a9bd69698a57e81a8c8c97826025d
+ruby-2.3/bundler-1.13.6.gem:
+  object_id: bad05dd0-86e8-4a45-8a46-70880a1c6dd8
+  sha: c4b33f5e0a6ad4a363d2820260f10454197cceff
+  size: 307200
+ruby-2.3/ruby-2.3.3.tar.gz:
+  object_id: 218c9c26-c0b4-4115-84d1-9f0283d6d633
+  sha: 1014ee699071aa2ddd501907d18cbe15399c997d
+  size: 17813577
+ruby-2.3/rubygems-2.6.8.tgz:
+  object_id: 2393318f-83ea-4e9c-9d18-83d82ee34d94
+  sha: d253fd1caca6103a9e2a69127ac158a3745fbb44
+  size: 754300
