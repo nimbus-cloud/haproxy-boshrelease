@@ -56,7 +56,9 @@ start_haproxy() {
         inflate_certs
         echo "$("${TIMESTAMP}"): Starting HAProxy"
         set +e
-        "${DAEMON}" -f "${CONFIG}" -D -p "${PID_FILE}" 0<&-
+##       Multi config fork 
+#        "${DAEMON}" -f "${CONFIG}" -D -p "${PID_FILE}" 0<&-
+        for file in $(ls /var/vcap/jobs/haproxy/config/*.config); do /var/vcap/packages/haproxy/bin/haproxy -f "$file"; done 0<&-
         RETVAL=$?
         set -e
         case "${RETVAL}" in

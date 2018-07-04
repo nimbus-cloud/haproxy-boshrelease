@@ -1,0 +1,9 @@
+
+managed_by_broker: <%= p("tcp_agent.managed_by_broker") %>
+broker_end_point: <%= p("tcp_agent.broker_end_point") %>
+broker_username: <%= p("tcp_agent.broker_username") %>
+broker_password: <%= p("tcp_agent.broker_password") %>
+
+haproxy:
+  reload_command: "sudo /var/vcap/jobs/haproxy/bin/haproxy_reload"
+  config_dir: "/var/vcap/jobs/haproxy/config"

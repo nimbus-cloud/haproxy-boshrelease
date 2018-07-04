@@ -1,0 +1,9 @@
+---
+name: tcp-agent
+dependencies:
+- ruby
+files:
+- tcp-agent/Gemfile
+- tcp-agent/Gemfile.lock
+- tcp-agent/config.ru
+- tcp-agent/{app,config,vendor}/**/*

@@ -1,0 +1,25 @@
+---
+name: tcp-agent
+templates:
+  settings.yml.erb: config/settings.yml
+  tcp-agent_ctl.erb: bin/tcp-agent_ctl
+  drain-proxy.erb: bin/drain
+
+packages:
+- common
+- tcp-agent
+- ruby
+
+properties:
+  tcp_agent.managed_by_broker:
+    description: "Whether or not to fetch the config from the broker. In standalone mode (managed_by_broker: false) initial config is empty."
+    default: true
+  tcp_agent.broker_end_point:
+    description: "cf-proxy-broker endpoint"
+    default: "http://cf-proxy-broker.10.244.0.34.xip.io"
+  tcp_agent.broker_username:
+    description: "cf-proxy-broker username"
+    default: "admin"
+  tcp_agent.broker_password:
+    description: "cf-proxy-broker password"
+    default: "password"

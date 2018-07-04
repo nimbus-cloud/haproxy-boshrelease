@@ -1,0 +1,5 @@
+check process tcp-agent
+  with pidfile /var/vcap/sys/run/tcp-agent/tcp-agent.pid
+  start program "/var/vcap/jobs/tcp-agent/bin/tcp-agent_ctl start"
+  stop program "/var/vcap/jobs/tcp-agent/bin/tcp-agent_ctl stop" with timeout 45 seconds
+  group vcap
