@@ -55,7 +55,7 @@ start_haproxy() {
         inflate_certs
         echo "$("${TIMESTAMP}"): Starting HAProxy"
         set +e
-        for file in $(ls /var/vcap/jobs/haproxy/config/*.config); do $DAEMON -f "$file"; done 0<&-
+        for file in $(ls /var/vcap/jobs/haproxy/config/*.config); do /var/vcap/packages/haproxy/bin/haproxy -f "$file"; done 0<&-
         RETVAL=$?
         set -e
         case "${RETVAL}" in
