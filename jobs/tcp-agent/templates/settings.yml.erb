@@ -1,0 +1,19 @@
+
+managed_by_broker: <%= p("proxy_agent.managed_by_broker") %>
+broker_end_point: <%= p("proxy_agent.broker_end_point") %>
+broker_username: <%= p("proxy_agent.broker_username") %>
+broker_password: <%= p("proxy_agent.broker_password") %>
+
+squid:
+  reload_command: "sudo /var/vcap/jobs/squid/bin/squid_reload"
+  config_dir: "/var/vcap/data/squid/conf.d"
+  htpasswd_file: "/var/vcap/data/squid/htpasswd"
+
+
+static_users:
+<% 
+  str = p("squid.users").to_yaml 
+  str.gsub!(/^---/, '')
+%>
+<%=str%>
+ 
