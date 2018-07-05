@@ -41,38 +41,18 @@ remove_pid() {
 }
 
 inflate_certs() {
-	# reconstitute certs based on ttar file
-	mkdir -p ${JOB_DIR}/config/ssl
-	ttar < ${JOB_DIR}/config/certs.ttar
+    # reconstitute certs based on ttar file
+    mkdir -p ${JOB_DIR}/config/ssl
+    ttar < ${JOB_DIR}/config/certs.ttar
 }
-
 start_haproxy() {
-    status_haproxy
-    if [ "${RETVAL}" = 0 ]; then
-        echo "HAProxy is currently running"
-    else
-        RETVAL=0
-        ensure_dirs
-        inflate_certs
-        echo "$("${TIMESTAMP}"): Starting HAProxy"
-        set +e
-        "${DAEMON}" -f "${CONFIG}" -D -p "${PID_FILE}" 0<&-
-        RETVAL=$?
-        set -e
-        case "${RETVAL}" in
-            0)
-                echo "$("${TIMESTAMP}"): Finished starting HAProxy"
-                echo "SUCCESS"
-                ;;
-            *)
-                echo "$("${TIMESTAMP}"): Errored starting HAProxy"
-                echo "$("${TIMESTAMP}"): Errored starting HAProxy" >&2
-                remove_pid
-                echo "FAILED - check logs"
-                RETVAL=1
-                ;;
-        esac
-    fi
+    ensure_dirs
+    inflate_certs
+    echo "$("${TIMESTAMP}"): Starting HAProxy"
+    set +e
+    for file in $(ls /var/vcap/jobs/haproxy/config/*.config); do /var/vcap/packages/haproxy/bin/haproxy -f "$file" -p "${PID_FILE}"; done 0<&-
+    echo "$("${TIMESTAMP}"): Finished starting HAProxy"
+    echo "SUCCESS"
 }
 
 stop_haproxy() {
