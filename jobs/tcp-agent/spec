@@ -1,5 +1,5 @@
 ---
-name: proxy-agent
+name: tcp-agent
 templates:
   settings.yml.erb: config/settings.yml
   tcp-agent_ctl.erb: bin/tcp-agent_ctl
