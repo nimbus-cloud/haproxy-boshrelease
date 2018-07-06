@@ -1,4 +1,4 @@
 set -e -x
 
-cd ${BUILD_DIR}/proxy-agent
+cd ${BUILD_DIR}/tcp-agent
 BUNDLE_WITHOUT=development:test bundle package --all
