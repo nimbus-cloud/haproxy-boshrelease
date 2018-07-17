@@ -7,7 +7,7 @@ broker_password: <%= p("tcp_agent.broker_password") %>
 squid:
   reload_command: "sudo /var/vcap/jobs/haproxy/bin/haproxy_ctl force-reload"
   config_dir: "/var/vcap/jobs/haproxy/config"
-  htpasswd_file: "/var/vcap/data/haproxy/htpasswd"
+  htpasswd_file: "/var/vcap/data/tcp-agent/htpasswd"
 
 
 static_users:
